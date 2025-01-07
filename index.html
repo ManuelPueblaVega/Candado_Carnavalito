@@ -31,6 +31,23 @@ body {
   text-align: center;
   width: 90%;
   max-width: 600px;
+  transition: all 0.5s ease;
+}
+
+.lock-container.fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  border-radius: 0;
+  padding: 2rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .lock-svg {
@@ -46,6 +63,14 @@ body {
 
 .lock-body.unlocked {
   fill: var(--success);
+}
+
+.lock-shackle {
+  transition: d 0.5s ease;
+}
+
+.lock-shackle.unlocked {
+  d: path('M35 45 V35 A15 15 0 0 1 65 35 V45');
 }
 
 .interval-inputs {
@@ -126,6 +151,11 @@ button:hover {
   text-align: center;
   margin-top: 2rem;
   opacity: 0.7;
+  display: block;
+}
+
+.credits.hidden {
+  display: none;
 }
 
 .subtitle {
@@ -143,6 +173,19 @@ h2 {
 p {
   font-size: 0.9rem;
   margin: 0.5rem 0;
+}
+
+.fullscreen .score-image {
+  max-height: 80vh;
+  width: auto;
+}
+
+.game-content {
+  transition: opacity 0.5s ease;
+}
+
+.fullscreen .game-content {
+  display: none;
 }
 
 @media (max-width: 320px) {
@@ -163,93 +206,95 @@ p {
 </head>
 <body>
 <div class="lock-container">
-  <svg class="lock-svg" viewBox="0 0 100 100">
-    <rect class="lock-body" x="20" y="45" width="60" height="45" rx="5"/>
-    <path class="lock-shackle" d="M35 45 V25 A15 15 0 0 1 65 25 V45" fill="none" stroke="var(--primary)" stroke-width="8"/>
-  </svg>
-  
-  <h2>Candado Musical</h2>
-  <h3 class="subtitle">Melodía del Carnavalito</h3>
-  <p>Escucha los intervalos y selecciona la combinación correcta</p>
-  
-  <div class="interval-inputs">
-    <div class="interval-cell">
-      <button onclick="playInterval(1)">Escuchar 1</button>
-      <select id="interval1">
-        <option value="">Seleccionar...</option>
-        <option value="2m">2da menor</option>
-        <option value="2M">2da Mayor</option>
-        <option value="3m">3ra menor</option>
-        <option value="3M">3ra Mayor</option>
-        <option value="4j">4ta Justa</option>
-        <option value="4aum">4ta Aumentada</option>
-        <option value="5j">5ta Justa</option>
-        <option value="6m">6ta menor</option>
-        <option value="6M">6ta Mayor</option>
-        <option value="7m">7ma menor</option>
-        <option value="7M">7ma Mayor</option>
-        <option value="8j">8va</option>
-      </select>
+  <div class="game-content">
+    <svg class="lock-svg" viewBox="0 0 100 100">
+      <rect class="lock-body" x="20" y="45" width="60" height="45" rx="5"/>
+      <path class="lock-shackle" d="M35 45 V25 A15 15 0 0 1 65 25 V45" fill="none" stroke="var(--primary)" stroke-width="8"/>
+    </svg>
+    
+    <h2>Candado Musical</h2>
+    <h3 class="subtitle">Melodía del Carnavalito</h3>
+    <p>Escucha los intervalos y selecciona la combinación correcta</p>
+    
+    <div class="interval-inputs">
+      <div class="interval-cell">
+        <button onclick="playInterval(1)">Escuchar 1</button>
+        <select id="interval1">
+          <option value="">Seleccionar...</option>
+          <option value="2m">2da menor</option>
+          <option value="2M">2da Mayor</option>
+          <option value="3m">3ra menor</option>
+          <option value="3M">3ra Mayor</option>
+          <option value="4j">4ta Justa</option>
+          <option value="4aum">4ta Aumentada</option>
+          <option value="5j">5ta Justa</option>
+          <option value="6m">6ta menor</option>
+          <option value="6M">6ta Mayor</option>
+          <option value="7m">7ma menor</option>
+          <option value="7M">7ma Mayor</option>
+          <option value="8j">8va</option>
+        </select>
+      </div>
+      <div class="interval-cell">
+        <button onclick="playInterval(2)">Escuchar 2</button>
+        <select id="interval2">
+          <option value="">Seleccionar...</option>
+          <option value="2m">2da menor</option>
+          <option value="2M">2da Mayor</option>
+          <option value="3m">3ra menor</option>
+          <option value="3M">3ra Mayor</option>
+          <option value="4j">4ta Justa</option>
+          <option value="4aum">4ta Aumentada</option>
+          <option value="5j">5ta Justa</option>
+          <option value="6m">6ta menor</option>
+          <option value="6M">6ta Mayor</option>
+          <option value="7m">7ma menor</option>
+          <option value="7M">7ma Mayor</option>
+          <option value="8j">8va</option>
+        </select>
+      </div>
+      <div class="interval-cell">
+        <button onclick="playInterval(3)">Escuchar 3</button>
+        <select id="interval3">
+          <option value="">Seleccionar...</option>
+          <option value="2m">2da menor</option>
+          <option value="2M">2da Mayor</option>
+          <option value="3m">3ra menor</option>
+          <option value="3M">3ra Mayor</option>
+          <option value="4j">4ta Justa</option>
+          <option value="4aum">4ta Aumentada</option>
+          <option value="5j">5ta Justa</option>
+          <option value="6m">6ta menor</option>
+          <option value="6M">6ta Mayor</option>
+          <option value="7m">7ma menor</option>
+          <option value="7M">7ma Mayor</option>
+          <option value="8j">8va</option>
+        </select>
+      </div>
+      <div class="interval-cell">
+        <button onclick="playInterval(4)">Escuchar 4</button>
+        <select id="interval4">
+          <option value="">Seleccionar...</option>
+          <option value="2m">2da menor</option>
+          <option value="2M">2da Mayor</option>
+          <option value="3m">3ra menor</option>
+          <option value="3M">3ra Mayor</option>
+          <option value="4j">4ta Justa</option>
+          <option value="4aum">4ta Aumentada</option>
+          <option value="5j">5ta Justa</option>
+          <option value="6m">6ta menor</option>
+          <option value="6M">6ta Mayor</option>
+          <option value="7m">7ma menor</option>
+          <option value="7M">7ma Mayor</option>
+          <option value="8j">8va</option>
+        </select>
+      </div>
     </div>
-    <div class="interval-cell">
-      <button onclick="playInterval(2)">Escuchar 2</button>
-      <select id="interval2">
-        <option value="">Seleccionar...</option>
-        <option value="2m">2da menor</option>
-        <option value="2M">2da Mayor</option>
-        <option value="3m">3ra menor</option>
-        <option value="3M">3ra Mayor</option>
-        <option value="4j">4ta Justa</option>
-        <option value="4aum">4ta Aumentada</option>
-        <option value="5j">5ta Justa</option>
-        <option value="6m">6ta menor</option>
-        <option value="6M">6ta Mayor</option>
-        <option value="7m">7ma menor</option>
-        <option value="7M">7ma Mayor</option>
-        <option value="8j">8va</option>
-      </select>
-    </div>
-    <div class="interval-cell">
-      <button onclick="playInterval(3)">Escuchar 3</button>
-      <select id="interval3">
-        <option value="">Seleccionar...</option>
-        <option value="2m">2da menor</option>
-        <option value="2M">2da Mayor</option>
-        <option value="3m">3ra menor</option>
-        <option value="3M">3ra Mayor</option>
-        <option value="4j">4ta Justa</option>
-        <option value="4aum">4ta Aumentada</option>
-        <option value="5j">5ta Justa</option>
-        <option value="6m">6ta menor</option>
-        <option value="6M">6ta Mayor</option>
-        <option value="7m">7ma menor</option>
-        <option value="7M">7ma Mayor</option>
-        <option value="8j">8va</option>
-      </select>
-    </div>
-    <div class="interval-cell">
-      <button onclick="playInterval(4)">Escuchar 4</button>
-      <select id="interval4">
-        <option value="">Seleccionar...</option>
-        <option value="2m">2da menor</option>
-        <option value="2M">2da Mayor</option>
-        <option value="3m">3ra menor</option>
-        <option value="3M">3ra Mayor</option>
-        <option value="4j">4ta Justa</option>
-        <option value="4aum">4ta Aumentada</option>
-        <option value="5j">5ta Justa</option>
-        <option value="6m">6ta menor</option>
-        <option value="6M">6ta Mayor</option>
-        <option value="7m">7ma menor</option>
-        <option value="7M">7ma Mayor</option>
-        <option value="8j">8va</option>
-      </select>
-    </div>
-  </div>
 
-  <button onclick="checkCombination()">Verificar Combinación</button>
-  
-  <div class="feedback"></div>
+    <button onclick="checkCombination()">Verificar Combinación</button>
+    
+    <div class="feedback"></div>
+  </div>
   
   <div class="score">
     <h3>¡Felicitaciones! Has desbloqueado la partitura</h3>
@@ -316,18 +361,27 @@ function checkCombination() {
   
   const feedback = document.querySelector('.feedback');
   const lockBody = document.querySelector('.lock-body');
+  const lockShackle = document.querySelector('.lock-shackle');
   const score = document.querySelector('.score');
+  const container = document.querySelector('.lock-container');
+  const credits = document.querySelector('.credits');
   
   if (userCombination.join('') === correctCombination.join('')) {
     feedback.textContent = '¡Combinación correcta!';
     feedback.style.color = 'var(--success)';
     lockBody.classList.add('unlocked');
+    lockShackle.classList.add('unlocked');
     score.classList.add('visible');
+    container.classList.add('fullscreen');
+    credits.classList.add('hidden');
   } else {
     feedback.textContent = 'Combinación incorrecta. Intenta de nuevo.';
     feedback.style.color = 'var(--error)';
     lockBody.classList.remove('unlocked');
+    lockShackle.classList.remove('unlocked');
     score.classList.remove('visible');
+    container.classList.remove('fullscreen');
+    credits.classList.remove('hidden');
   }
 }
 </script>
