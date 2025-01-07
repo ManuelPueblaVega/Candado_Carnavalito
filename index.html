@@ -1,6 +1,7 @@
 <html><head><base href="./"> 
 <!DOCTYPE html>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Candado Musical</title>
 <style>
 :root {
@@ -19,19 +20,22 @@ body {
   min-height: 100vh;
   margin: 0;
   background: #ecf0f1;
+  padding: 1rem;
 }
 
 .lock-container {
   background: white;
-  padding: 2rem;
+  padding: 1.5rem;
   border-radius: 15px;
   box-shadow: 0 0 20px rgba(0,0,0,0.1);
   text-align: center;
+  width: 90%;
+  max-width: 600px;
 }
 
 .lock-svg {
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   margin-bottom: 1rem;
 }
 
@@ -46,9 +50,15 @@ body {
 
 .interval-inputs {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr;
   gap: 1rem;
   margin: 1rem 0;
+}
+
+@media (min-width: 768px) {
+  .interval-inputs {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .interval-cell {
@@ -62,18 +72,23 @@ select {
   border: 2px solid var(--primary);
   border-radius: 5px;
   margin: 0.5rem 0;
-  width: 120px;
+  width: 100%;
+  max-width: 200px;
+  font-size: 16px; 
 }
 
 button {
   background: var(--secondary);
   color: white;
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 0.8rem 1rem;
   border-radius: 5px;
   cursor: pointer;
   margin: 0.5rem;
   transition: background 0.3s ease;
+  font-size: 16px;
+  min-width: 120px;
+  touch-action: manipulation; 
 }
 
 button:hover {
@@ -82,7 +97,7 @@ button:hover {
 
 .score {
   display: none;
-  max-width: 500px;
+  width: 100%;
   margin-top: 2rem;
 }
 
@@ -94,6 +109,7 @@ button:hover {
   margin-top: 1rem;
   color: var(--primary);
   font-weight: bold;
+  font-size: 0.9rem;
 }
 
 .score-image {
@@ -116,6 +132,33 @@ button:hover {
   color: var(--primary);
   margin-top: -10px;
   margin-bottom: 20px;
+  font-size: 1rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1rem 0;
+}
+
+p {
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+}
+
+/* Adjustments for very small screens */
+@media (max-width: 320px) {
+  .lock-container {
+    padding: 1rem;
+  }
+  
+  button {
+    padding: 0.6rem 0.8rem;
+    min-width: 100px;
+  }
+  
+  select {
+    max-width: 150px;
+  }
 }
 </style>
 </head>
