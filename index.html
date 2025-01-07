@@ -6,7 +6,7 @@
 <style>
 :root {
   --primary: #2c3e50;
-  --secondary: #3498db;
+  --secondary: #3498db;  
   --success: #27ae60;
   --error: #e74c3c;
 }
@@ -99,7 +99,7 @@ select {
   margin: 0.5rem 0;
   width: 100%;
   max-width: 200px;
-  font-size: 16px; 
+  font-size: 16px;
 }
 
 button {
@@ -113,7 +113,7 @@ button {
   transition: background 0.3s ease;
   font-size: 16px;
   min-width: 120px;
-  touch-action: manipulation; 
+  touch-action: manipulation;
 }
 
 button:hover {
@@ -143,6 +143,7 @@ button:hover {
   margin-top: 1rem;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  object-fit: contain;
 }
 
 .credits {
@@ -178,6 +179,8 @@ p {
 .fullscreen .score-image {
   max-height: 80vh;
   width: auto;
+  margin: auto;
+  display: block;
 }
 
 .game-content {
@@ -200,6 +203,31 @@ p {
   
   select {
     max-width: 150px;
+  }
+}
+
+/* Optimizations for mobile score display */
+@media (max-width: 768px) {
+  .fullscreen {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem !important;
+  }
+  
+  .score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  
+  .score-image {
+    max-width: 95%;
+    max-height: 70vh;
+    width: auto;
+    margin: 10px auto;
   }
 }
 </style>
