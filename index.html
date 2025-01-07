@@ -1,0 +1,293 @@
+<html><head><base href="./"> 
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<title>Candado Musical</title>
+<style>
+:root {
+  --primary: #2c3e50;
+  --secondary: #3498db;
+  --success: #27ae60;
+  --error: #e74c3c;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  background: #ecf0f1;
+}
+
+.lock-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.lock-svg {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 1rem;
+}
+
+.lock-body {
+  fill: var(--primary);
+  transition: fill 0.3s ease;
+}
+
+.lock-body.unlocked {
+  fill: var(--success);
+}
+
+.interval-inputs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.interval-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+select {
+  padding: 0.5rem;
+  border: 2px solid var(--primary);
+  border-radius: 5px;
+  margin: 0.5rem 0;
+  width: 120px;
+}
+
+button {
+  background: var(--secondary);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0.5rem;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: var(--primary);
+}
+
+.score {
+  display: none;
+  max-width: 500px;
+  margin-top: 2rem;
+}
+
+.score.visible {
+  display: block;
+}
+
+.feedback {
+  margin-top: 1rem;
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.score-image {
+  max-width: 100%;
+  height: auto;
+  margin-top: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.credits {
+  font-size: 0.8em;
+  color: #95a5a6;
+  text-align: center;
+  margin-top: 2rem;
+  opacity: 0.7;
+}
+
+.subtitle {
+  color: var(--primary);
+  margin-top: -10px;
+  margin-bottom: 20px;
+}
+</style>
+</head>
+<body>
+<div class="lock-container">
+  <svg class="lock-svg" viewBox="0 0 100 100">
+    <rect class="lock-body" x="20" y="45" width="60" height="45" rx="5"/>
+    <path class="lock-shackle" d="M35 45 V25 A15 15 0 0 1 65 25 V45" fill="none" stroke="var(--primary)" stroke-width="8"/>
+  </svg>
+  
+  <h2>Candado Musical</h2>
+  <h3 class="subtitle">Melodía del Carnavalito</h3>
+  <p>Escucha los intervalos y selecciona la combinación correcta</p>
+  
+  <div class="interval-inputs">
+    <div class="interval-cell">
+      <button onclick="playInterval(1)">Escuchar 1</button>
+      <select id="interval1">
+        <option value="">Seleccionar...</option>
+        <option value="2m">2da menor</option>
+        <option value="2M">2da Mayor</option>
+        <option value="3m">3ra menor</option>
+        <option value="3M">3ra Mayor</option>
+        <option value="4j">4ta Justa</option>
+        <option value="4aum">4ta Aumentada</option>
+        <option value="5j">5ta Justa</option>
+        <option value="6m">6ta menor</option>
+        <option value="6M">6ta Mayor</option>
+        <option value="7m">7ma menor</option>
+        <option value="7M">7ma Mayor</option>
+        <option value="8j">8va Justa</option>
+      </select>
+    </div>
+    <div class="interval-cell">
+      <button onclick="playInterval(2)">Escuchar 2</button>
+      <select id="interval2">
+        <option value="">Seleccionar...</option>
+        <option value="2m">2da menor</option>
+        <option value="2M">2da Mayor</option>
+        <option value="3m">3ra menor</option>
+        <option value="3M">3ra Mayor</option>
+        <option value="4j">4ta Justa</option>
+        <option value="4aum">4ta Aumentada</option>
+        <option value="5j">5ta Justa</option>
+        <option value="6m">6ta menor</option>
+        <option value="6M">6ta Mayor</option>
+        <option value="7m">7ma menor</option>
+        <option value="7M">7ma Mayor</option>
+        <option value="8j">8va Justa</option>
+      </select>
+    </div>
+    <div class="interval-cell">
+      <button onclick="playInterval(3)">Escuchar 3</button>
+      <select id="interval3">
+        <option value="">Seleccionar...</option>
+        <option value="2m">2da menor</option>
+        <option value="2M">2da Mayor</option>
+        <option value="3m">3ra menor</option>
+        <option value="3M">3ra Mayor</option>
+        <option value="4j">4ta Justa</option>
+        <option value="4aum">4ta Aumentada</option>
+        <option value="5j">5ta Justa</option>
+        <option value="6m">6ta menor</option>
+        <option value="6M">6ta Mayor</option>
+        <option value="7m">7ma menor</option>
+        <option value="7M">7ma Mayor</option>
+        <option value="8j">8va Justa</option>
+      </select>
+    </div>
+    <div class="interval-cell">
+      <button onclick="playInterval(4)">Escuchar 4</button>
+      <select id="interval4">
+        <option value="">Seleccionar...</option>
+        <option value="2m">2da menor</option>
+        <option value="2M">2da Mayor</option>
+        <option value="3m">3ra menor</option>
+        <option value="3M">3ra Mayor</option>
+        <option value="4j">4ta Justa</option>
+        <option value="4aum">4ta Aumentada</option>
+        <option value="5j">5ta Justa</option>
+        <option value="6m">6ta menor</option>
+        <option value="6M">6ta Mayor</option>
+        <option value="7m">7ma menor</option>
+        <option value="7M">7ma Mayor</option>
+        <option value="8j">8va Justa</option>
+      </select>
+    </div>
+  </div>
+
+  <button onclick="checkCombination()">Verificar Combinación</button>
+  
+  <div class="feedback"></div>
+  
+  <div class="score">
+    <h3>¡Felicitaciones! Has desbloqueado la partitura</h3>
+    <img src="Carnavalito del cienpies.png" alt="Partitura del Carnavalito del ciempiés" class="score-image">
+  </div>
+</div>
+
+<div class="credits">
+  Vera Arroyo • Paula Tarajano • Manuel Puebla
+</div>
+
+<script>
+const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+const intervals = {
+  '2m': [261.63, 277.18],  // Do4 - Reb4
+  '2M': [261.63, 293.66],  // Do4 - Re4
+  '3m': [261.63, 311.13],  // Do4 - Mib4
+  '3M': [261.63, 329.63],  // Do4 - Mi4
+  '4j': [261.63, 349.23],  // Do4 - Fa4
+  '4aum': [261.63, 369.99], // Do4 - Fa#4
+  '5j': [261.63, 392.00],  // Do4 - Sol4
+  '6m': [261.63, 415.30],  // Do4 - Lab4
+  '6M': [261.63, 440.00],  // Do4 - La4
+  '7m': [261.63, 466.16],  // Do4 - Sib4
+  '7M': [261.63, 493.88],  // Do4 - Si4
+  '8j': [261.63, 523.25]   // Do4 - Do5
+};
+
+const correctCombination = ['4j', '6M', '8j', '5j'];
+
+function playTone(frequency, duration) {
+  const oscillator = audioContext.createOscillator();
+  const gainNode = audioContext.createGain();
+  
+  oscillator.type = 'sine';
+  oscillator.frequency.value = frequency;
+  
+  gainNode.gain.setValueAtTime(0.5, audioContext.currentTime);
+  gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration);
+  
+  oscillator.connect(gainNode);
+  gainNode.connect(audioContext.destination);
+  
+  oscillator.start();
+  oscillator.stop(audioContext.currentTime + duration);
+}
+
+function playInterval(position) {
+  const interval = correctCombination[position - 1];
+  const [note1, note2] = intervals[interval];
+  
+  playTone(note1, 0.5);
+  setTimeout(() => playTone(note2, 0.5), 700);
+}
+
+function checkCombination() {
+  const userCombination = [
+    document.getElementById('interval1').value,
+    document.getElementById('interval2').value,
+    document.getElementById('interval3').value,
+    document.getElementById('interval4').value
+  ];
+  
+  const feedback = document.querySelector('.feedback');
+  const lockBody = document.querySelector('.lock-body');
+  const score = document.querySelector('.score');
+  
+  if (userCombination.join('') === correctCombination.join('')) {
+    feedback.textContent = '¡Combinación correcta!';
+    feedback.style.color = 'var(--success)';
+    lockBody.classList.add('unlocked');
+    score.classList.add('visible');
+  } else {
+    feedback.textContent = 'Combinación incorrecta. Intenta de nuevo.';
+    feedback.style.color = 'var(--error)';
+    lockBody.classList.remove('unlocked');
+    score.classList.remove('visible');
+  }
+}
+</script>
+</body>
+</html>
